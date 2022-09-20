@@ -9,7 +9,6 @@ import './styles/main.css'
 import 'uno.css'
 
 const routes = setupLayouts(generatedRoutes)
-
 // https://github.com/antfu/vite-ssg
 export const createApp = ViteSSG(
   App,
@@ -20,3 +19,18 @@ export const createApp = ViteSSG(
       .forEach(i => i.install?.(ctx))
   },
 )
+
+export async function includedRoutes(paths, routes) {
+  // Sensitive key is managed by Vite - this would not be available inside
+  // vite.config.js as it runs before the environment has been populated.
+  // const apiClient = new MyApiClient(import.meta.env.MY_API_KEY)
+
+  return Promise.all(
+    routes.flatMap(async (route) => {
+      // return route.name === 'Blog'
+      //   ? (await apiClient.fetchBlogSlugs()).map(slug => `/blog/${slug}`)
+      //   : route.path
+      return route.path
+    }),
+  )
+}
