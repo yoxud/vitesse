@@ -9,6 +9,7 @@ import './styles/main.css'
 import 'uno.css'
 
 const routes = setupLayouts(generatedRoutes)
+
 // https://github.com/antfu/vite-ssg
 export const createApp = ViteSSG(
   App,
@@ -36,6 +37,4 @@ export async function includedRoutes(paths, routes) {
   const p = [...paths.filter(path => !path.includes(':')), '/1', '/2']
   console.log(p)
   return p
-  // return [...paths, '/product/tata']
-  // paths = [...paths, '/[productid].vue','/[productid].vue'],
 }
