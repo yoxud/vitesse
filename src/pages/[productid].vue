@@ -1,19 +1,21 @@
 <script setup lang="ts">
+import { storeToRefs } from 'pinia'
 import { useProductStore } from '~/store/products'
 
 const props = defineProps({
-  productid: Number,
+  productid: String,
 })
-
+let id: Number
+if (props.productid !== undefined)
+  id = parseInt(props.productid)
 const store = useProductStore()
-const products = store.products
-const product = products.find((prod) => {
-  return prod.id === props.productid
+const { products } = storeToRefs(store)
+const product = products.value.find((prod) => {
+  return prod.id === id
 })
-
-const productname = typeof product === 'undefined' ? '' : product.name
+const productname = product === undefined ? '' : product.name
 </script>
 
 <template>
-  <p>Product Name: {{ productname }}</p>
+  <p>Product Name: {{ productname }} </p>
 </template>

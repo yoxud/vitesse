@@ -25,12 +25,17 @@ export async function includedRoutes(paths, routes) {
   // vite.config.js as it runs before the environment has been populated.
   // const apiClient = new MyApiClient(import.meta.env.MY_API_KEY)
 
-  return Promise.all(
-    routes.flatMap(async (route) => {
-      // return route.name === 'Blog'
-      //   ? (await apiClient.fetchBlogSlugs()).map(slug => `/blog/${slug}`)
-      //   : route.path
-      return route.path
-    }),
-  )
+  // return Promise.all(
+  // routes.flatMap(async (route) => {
+  //   return route.name === 'Blog'
+  //     ? (await apiClient.fetchBlogSlugs()).map(slug => `/blog/${slug}`)
+  //     : route.path
+  // }),
+  //  routes = [...routes, 2, 3],
+  // )
+  const p = [...paths.filter(path => !path.includes(':')), '/1', '/2']
+  console.log(p)
+  return p
+  // return [...paths, '/product/tata']
+  // paths = [...paths, '/[productid].vue','/[productid].vue'],
 }
