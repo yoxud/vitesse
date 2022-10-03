@@ -34,7 +34,6 @@ watchEffect(() => {
         </ul>
       </p>
     </template>
-
     <div>
       <button
         btn m="3 t6" text-sm

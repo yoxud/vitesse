@@ -43,6 +43,7 @@ const { t } = useI18n()
       @keydown.enter="go"
     >
     <label class="hidden" for="input">{{ t('intro.whats-your-name') }}</label>
+    <a href="/1.html"> oneA </a>
 
     <div>
       <button
